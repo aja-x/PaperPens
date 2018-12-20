@@ -15,6 +15,7 @@
     <link href="{{ asset('css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jcarousel.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- Theme skin -->
     <link href="{{ asset('skins/default.css') }}" rel="stylesheet" />
@@ -347,9 +348,12 @@
 <script src="{{ asset('js/jquery.ba-cond.min.js') }}"></script>
 <script src="{{ asset('js/jquery.slitslider.js') }}"></script>
 <script src="{{ asset('js/animate.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 
 <!-- Template Custom JavaScript File -->
 <script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('js/style.js') }}"></script>
 
 </body>
 </html>
