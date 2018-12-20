@@ -9,12 +9,11 @@ class DosenModel extends Authenticatable
 {
     use Notifiable;
     protected $guard = 'dosen';
-    protected $table = 'tb_user';
-    protected $primaryKey = 'id_user';
+    protected $table = 'tb_dosen';
+    protected $primaryKey = 'id_dosen';
     protected $guarded = [
-        'id_user'
+        'id_dosen'
     ];
-    protected $hidden = [
-        'password_user'
-    ];
+    public $timestamps = false;
+
 }

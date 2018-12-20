@@ -17,4 +17,5 @@ class EditorModel extends Authenticatable
     protected $hidden = [
         'password_editor'
     ];
+    public $timestamps = false;
 }
