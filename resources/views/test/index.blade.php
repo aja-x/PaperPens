@@ -3,7 +3,6 @@
 <section id="featured">
     <!-- start slider -->
     <!-- Slider -->
-    bla
     <div id="nivo-slider">
         <div class="nivo-slider">
             <!-- Slide #1 image -->

@@ -63,6 +63,27 @@
             }
         </style>
     </head>
+    <!--<form action="route('search.search')" method="GET" role="search">
+        {{ csrf_field() }}
+        <div class="input-group">
+            <input type="text" class="form-control" name="key"
+                placeholder="Search.."> <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>-->
+    <form action="{{ route('search.cari') }}" method="GET">
+        <div class="row">
+              <div class="input-field col s12">
+                <input type="text" class="validate" name="q">
+                <label for="title">Cari</label>
+              </div>
+               <button type="submit" class="btn btn-flat pink accent-3 waves-effect waves-light white-text right">Cari <i class="material-icons right">search</i></button>
+        </div>
+     </form>
+
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
