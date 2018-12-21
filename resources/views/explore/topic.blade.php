@@ -9,7 +9,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
 
-                    <strong>Name:</strong>
+                    <strong>Paper :</strong>
                   <ul>
                     @foreach ($topic as $data)
                     <li>{{$data['judul_paper']}}</li>
