@@ -17,9 +17,11 @@ Route::prefix('explore')->group(function () {
     Route::get('/year/{year}', 'ExploreController@PaperByYear')->name('explore.year');
 
 });
-Route::get ( '/', function () {
-    return view ( 'welcome' );
-} );
+Route::get('/', 'HomeController@index')->name('home');
+
+/*Route::get ( '/', function () {
+    return view ( 'homepage.home' );
+} );*/
 
 Route::get('search/', 'SearchController@getSearch')->name('search.cari');
 
