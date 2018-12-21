@@ -5,14 +5,22 @@
         <div class="container">
             <div class="row">
                 <div class="span2">
-                    <h2><a class="btn btn-success" href="{{ route('admin.departemen.index') }}">Kembali</a></h2>
+                    <h2><a class="btn btn-success" href="{{ route('admin.editor.index') }}">Kembali</a></h2>
                 </div>
                 <div class="span10">
-                    <form action="{{ route('admin.departemen.update', $departemen->id_departemen) }}" method="POST">
+                    <form action="{{ route('admin.editor.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="NamaDepartemen">Nama Departemen</label>
-                            <input type="text" class="form-control" id="NamaDepartemen" name="nama_departemen" placeholder="Masukkan nama departemen" value="{{ $departemen->nama_departemen }}">
+                            <label for="NamaEditor">Nama</label>
+                            <input type="text" class="form-control" id="NamaEditor" name="nama_editor" placeholder="Masukkan nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="EmailEditor">Email</label>
+                            <input type="email" class="form-control" id="EmailEditor" name="email_editor" placeholder="Masukkan email">
+                        </div>
+                        <div class="form-group">
+                            <label for="PasswordEditor">Password</label>
+                            <input type="password" class="form-control" id="PasswordEditor" name="password_editor" placeholder="Masukkan password">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

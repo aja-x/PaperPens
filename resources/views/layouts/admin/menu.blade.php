@@ -47,12 +47,16 @@
                             <li class="dropdown navbar-right">
                                 <a href="#">master <i class="icon-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="typography.html">departemen</a></li>
-                                    </li>
+                                    <li><a href="{{ route('admin.departemen.index') }}">departemen</a></li>
                                 </ul>
                             </li>
-                            <li class="navbar-right">
-                                <a href="{{ route('admin.dosen.index') }}">dosen </a>
+                            <li class="dropdown navbar-right">
+                                <a href="#">user <i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('admin.show') }}">admin</a></li>
+                                    <li><a href="{{ route('admin.editor.index') }}">editor</a></li>
+                                    <li><a href="{{ route('admin.dosen.index') }}">dosen</a></li>
+                                </ul>
                             </li>
                             <li class="navbar-right">
                                 <a href="{{ route('admin.paper.index') }}">paper </a>
