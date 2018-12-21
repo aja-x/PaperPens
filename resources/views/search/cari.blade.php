@@ -162,8 +162,8 @@
               <div class=span3>
                 <div class="section">
                   @if (count($hasil))
-                  <div class="card-panel green white-text"><h5>Hasil pencarian : {{$keyword}}</h5></div>
-                  @foreach($hasil as $data)
+                    <div class="card-panel green white-text"><h5>Hasil pencarian : {{$keyword}}</h5></div>
+                    @foreach($hasil as $data)
                 <!--  <div class="row">
                     <div class="col s12"> -->
                       <h5>{{ $data->judul_paper }}</h5>

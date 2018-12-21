@@ -157,7 +157,7 @@
         </div>
     </header>
     <!-- end header -->
-    
+
     <section id="featured">
         <!-- start slider -->
         <!-- Slider -->
@@ -218,7 +218,7 @@
                             Just Published
                         </span>
                         <div class="form-group"><strong>
-                            <h4>{{ $data->judul_paper }}<h4></strong>
+                          {{--<h4>{{ $data->judul_paper }}<h4></strong>--}}
                         </div>
                     </h5>
                 </div>

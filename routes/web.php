@@ -23,7 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
     return view ( 'homepage.home' );
 } );*/
 
-Route::get('search/', 'SearchController@getSearch')->name('search.cari');
+Route::get('/search', 'SearchController@getSearch')->name('search.cari');
 
 Route::prefix('admin')->group(function () {
     //Admin Profile
