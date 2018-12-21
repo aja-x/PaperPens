@@ -26,14 +26,31 @@ Route::get('search/', 'SearchController@getSearch')->name('search.cari');
 Route::prefix('admin')->group(function () {
     //Admin Profile
     Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+    Route::get('/show', 'Admin\AdminController@show')->name('admin.show');
+    Route::get('/create', 'Admin\AdminController@create')->name('admin.create');
+    Route::post('/store','Admin\AdminController@store')->name('admin.store');
+    Route::get('/edit/{id_admin}', 'Admin\AdminController@edit')->name('admin.edit');
+    Route::post('/update/{id_admin}','Admin\AdminController@update')->name('admin.update');
+    Route::post('/destroy/{id_admin}', 'Admin\AdminController@destroy')->name('admin.destroy');
+
     //Dosen CRUD
     Route::get('/dosen/', 'Admin\DosenController@index')->name('admin.dosen.index');
     Route::get('/dosen/show/{id_dosen}', 'Admin\DosenController@show')->name('admin.dosen.show');
     Route::get('/dosen/create', 'Admin\DosenController@create')->name('admin.dosen.create');
     Route::post('/dosen/store','Admin\DosenController@store')->name('admin.dosen.store');
-    Route::get('/dosen/edit/{id_dosen}', 'Admin\DosenController@edit')->name('admin.dosen.edit');
-    Route::post('/dosen/update/{id_dosen}','Admin\DosenController@update')->name('admin.dosen.update');
+//    Route::get('/dosen/edit/{id_dosen}', 'Admin\DosenController@edit')->name('admin.dosen.edit');
+//    Route::post('/dosen/update/{id_dosen}','Admin\DosenController@update')->name('admin.dosen.update');
     Route::post('/dosen/destroy/{id_dosen}', 'Admin\DosenController@destroy')->name('admin.dosen.destroy');
+
+    //Editor CRUD
+    Route::get('/editor/', 'Admin\EditorController@index')->name('admin.editor.index');
+    Route::get('/editor/show/{id_editor}', 'Admin\EditorController@show')->name('admin.editor.show');
+    Route::get('/editor/create', 'Admin\EditorController@create')->name('admin.editor.create');
+    Route::post('/editor/store','Admin\EditorController@store')->name('admin.editor.store');
+    Route::get('/editor/edit/{id_editor}', 'Admin\EditorController@edit')->name('admin.editor.edit');
+    Route::post('/editor/update/{id_editor}','Admin\EditorController@update')->name('admin.editor.update');
+    Route::post('/editor/destroy/{id_editor}', 'Admin\EditorController@destroy')->name('admin.editor.destroy');
+
     //Departemen CRUD
     Route::get('/departemen/', 'Admin\DepartemenController@index')->name('admin.departemen.index');
     Route::get('/departemen/create', 'Admin\DepartemenController@create')->name('admin.departemen.create');
@@ -41,6 +58,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/departemen/edit/{id_departemen}', 'Admin\DepartemenController@edit')->name('admin.departemen.edit');
     Route::post('/departemen/update/{id_departemen}','Admin\DepartemenController@update')->name('admin.departemen.update');
     Route::post('/departemen/destroy/{id_departemen}', 'Admin\DepartemenController@destroy')->name('admin.departemen.destroy');
+
     //Paper show admin
     Route::get('/paper/', 'Admin\PaperController@index')->name('admin.paper.index');
     Route::get('/paper/show/{id_paper}', 'Admin\PaperController@show')->name('admin.paper.show');

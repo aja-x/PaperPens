@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="span2">
-                    <h2><a class="btn btn-success" href="{{ route('admin.departemen.create') }}">Tambah Departemen</a></h2>
+                    <h2><a class="btn btn-success" href="{{ route('admin.create') }}">Tambah Admin</a></h2>
                 </div>
                 <div class="span10">
                     <table class="table table-striped table-bordered table-responsive table-hover" id="dosen-datatable" width="100%">
@@ -13,18 +13,20 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama</th>
+                            <th>Email</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($departemen as $data)
+                        @foreach ($admin as $data)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td>{{ $data->nama_departemen }}</td>
+                                <td>{{ $data->nama_admin }}</td>
+                                <td>{{ $data->email_admin }}</td>
                                 <td>
-                                    <form action="{{ route('admin.departemen.destroy',$data->id_departemen) }}" method="POST">
-                                        <a class="btn btn-primary" href="{{ route('admin.departemen.edit',$data->id_departemen) }}">Edit</a>
-                                        {{--<a class="btn btn-info" href="{{ route('admin.departemen.show',$data->id_departemen) }}">Show</a>--}}
+                                    <form action="{{ route('admin.destroy',$data->id_admin) }}" method="POST">
+                                        {{--<a class="btn btn-primary" href="{{ route('admin.admin.edit',$data->id_admin) }}">Edit</a>--}}
+                                        {{--<a class="btn btn-info" href="{{ route('admin.admin.show',$data->id_admin) }}">Show</a>--}}
                                         @csrf
                                         {{--@method('DELETE')--}}
                                         <button type="submit" class="btn btn-danger">Delete</button>

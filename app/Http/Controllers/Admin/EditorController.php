@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\AdminModel;
+use App\EditorModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class EditorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $editor = EditorModel::all();
+        $i=0;
+        return view('admin.editor.index',compact('editor', 'i'));
     }
 
     /**
@@ -25,7 +27,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.editor.create');
     }
 
     /**
@@ -37,13 +39,13 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_admin' => 'required',
-            'email_admin' => 'required',
-            'password_admin' => 'required',
+            'nama_editor' => 'required',
+            'email_editor' => 'required',
+            'password_editor' => 'required',
         ]);
-        AdminModel::create($request->all());
-        return redirect()->route('admin.show')
-            ->with('success','Admin created successfully.');
+        EditorModel::create($request->all());
+        return redirect()->route('admin.editor.index')
+            ->with('success','Editor created successfully.');
     }
 
     /**
@@ -52,11 +54,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $admin = AdminModel::all();
-        $i = 0;
-        return view('admin.show',compact('admin', 'i'));
+        //
     }
 
     /**
@@ -65,10 +65,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_admin)
+    public function edit($id_editor)
     {
-        $admin =  AdminModel::find($id_admin);
-        return view('admin.edit', compact('admin'));
+        $editor =  EditorModel::find($id_editor);
+        return view('admin.editor.edit', compact('editor'));
     }
 
     /**
@@ -78,17 +78,16 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_admin)
+    public function update(Request $request, $id_editor)
     {
         $request->validate([
-            'nama_admin' => 'required',
-            'email_admin' => 'required',
-            'password_admin' => 'required',
+            'nama_editor' => 'required',
+            'email_editor' => 'required',
+            'password_editor' => 'required',
         ]);
-        AdminModel::find($id_admin)->update($request->all());
-        return redirect()->route('admin.show')
-            ->with('success','Admin updated successfully');
-
+        EditorModel::find($id_editor)->update($request->all());
+        return redirect()->route('admin.editor.index')
+            ->with('success','Editor updated successfully');
     }
 
     /**
@@ -97,10 +96,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_admin)
+    public function destroy($id_editor)
     {
-        AdminModel::find($id_admin)->delete();
-        return redirect()->route('admin.show')
-            ->with('success','Admin deleted successfully');
+        EditorModel::find($id_editor)->delete();
+        return redirect()->route('admin.editor.index')
+            ->with('success','Editor deleted successfully');
     }
 }

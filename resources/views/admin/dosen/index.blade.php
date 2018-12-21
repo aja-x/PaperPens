@@ -27,7 +27,7 @@
                                 <td>{{ $data->nama_departemen }}</td>
                                 <td>
                                     <form action="{{ route('admin.dosen.destroy',$data->id_dosen) }}" method="POST">
-                                        <a class="btn btn-primary" href="{{ route('admin.dosen.edit',$data->id_dosen) }}">Edit</a>
+                                        {{--<a class="btn btn-primary" href="{{ route('admin.dosen.edit',$data->id_dosen) }}">Edit</a>--}}
                                         <a class="btn btn-info" href="{{ route('admin.dosen.show',$data->id_dosen) }}">Show</a>
                                         @csrf
                                         {{--@method('DELETE')--}}

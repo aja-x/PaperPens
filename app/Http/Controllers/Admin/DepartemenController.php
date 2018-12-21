@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\AdminModel;
+use App\DepartemenModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class DepartemenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $departemen = DepartemenModel::all();
+        $i = 0;
+        return view('admin.departemen.index',compact('departemen', 'i'));
+
     }
 
     /**
@@ -25,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.departemen.create');
     }
 
     /**
@@ -37,13 +40,11 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_admin' => 'required',
-            'email_admin' => 'required',
-            'password_admin' => 'required',
+            'nama_departemen' => 'required',
         ]);
-        AdminModel::create($request->all());
-        return redirect()->route('admin.show')
-            ->with('success','Admin created successfully.');
+        DepartemenModel::create($request->all());
+        return redirect()->route('admin.departemen.index')
+            ->with('success','Departemen created successfully.');
     }
 
     /**
@@ -52,11 +53,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $admin = AdminModel::all();
-        $i = 0;
-        return view('admin.show',compact('admin', 'i'));
+        //
     }
 
     /**
@@ -65,10 +64,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_admin)
+    public function edit($id_departemen)
     {
-        $admin =  AdminModel::find($id_admin);
-        return view('admin.edit', compact('admin'));
+        $departemen =  DepartemenModel::find($id_departemen);
+        return view('admin.departemen.edit', compact('departemen'));
     }
 
     /**
@@ -78,17 +77,14 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_admin)
+    public function update(Request $request, $id_departemen)
     {
         $request->validate([
-            'nama_admin' => 'required',
-            'email_admin' => 'required',
-            'password_admin' => 'required',
+            'nama_departemen' => 'required',
         ]);
-        AdminModel::find($id_admin)->update($request->all());
-        return redirect()->route('admin.show')
-            ->with('success','Admin updated successfully');
-
+        DepartemenModel::find($id_departemen)->update($request->all());
+        return redirect()->route('admin.departemen.index')
+            ->with('success','Departemen updated successfully');
     }
 
     /**
@@ -97,10 +93,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_admin)
+    public function destroy($id_departemen)
     {
-        AdminModel::find($id_admin)->delete();
-        return redirect()->route('admin.show')
-            ->with('success','Admin deleted successfully');
+        DepartemenModel::find($id_departemen)->delete();
+        return redirect()->route('admin.departemen.index')
+            ->with('success','Departemen deleted successfully');
+
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DepartemenModel;
 use App\DosenModel;
 use App\VDosenModel;
+use App\VPaperKontributorModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -62,9 +63,12 @@ class DosenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_dosen)
     {
-        //
+        $i=0;
+        $dosen = VDosenModel::find($id_dosen);
+        $kontributor = $this->getPaperFromKontributor($id_dosen);
+        return view('admin.dosen.show',compact('dosen', 'kontributor', 'i'));
     }
 
     /**
@@ -119,5 +123,10 @@ class DosenController extends Controller
     public function getDepartemen()
     {
         return DepartemenModel::all();
+    }
+
+    public function getPaperFromKontributor($id_dosen)
+    {
+        return VPaperKontributorModel::where('id_dosen', $id_dosen)->get();
     }
 }
