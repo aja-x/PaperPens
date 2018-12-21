@@ -19,7 +19,7 @@ Route::prefix('explore')->group(function () {
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('search/', 'SearchController@getSearch')->name('search.cari');
+Route::get('/search', 'SearchController@getSearch')->name('search.cari');
 
 Route::prefix('admin')->group(function () {
     //Admin Profile

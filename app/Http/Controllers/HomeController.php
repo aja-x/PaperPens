@@ -14,11 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $data=VPaperTopicModel::get();
-      $subset = $data->map(function ($user) {
-      return $user->only(['id', 'name', 'email']);
-    });
-      return view('homepage.home',compact('data'));
+      $data=VPaperTopicModel::all();
+      return view('homepage.home');
     }
 
     /**
