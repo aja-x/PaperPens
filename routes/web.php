@@ -1,6 +1,5 @@
 <?php
-use Illuminate\Http\Request;
-use App\VPaperTopicModel;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +17,8 @@ Route::prefix('explore')->group(function () {
 
 });
 Route::get ( '/', function () {
-    return view ( 'welcome' );
-} );
+    return view ( 'layouts.app' );
+});
 
 Route::get('search/', 'SearchController@getSearch')->name('search.cari');
 
@@ -63,4 +62,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/paper/', 'Admin\PaperController@index')->name('admin.paper.index');
     Route::get('/paper/show/{id_paper}', 'Admin\PaperController@show')->name('admin.paper.show');
 
+    //Login route
+    Route::post('/dosen/login', 'Admin\Auth\LoginController@login')->name('dosen.login')->middleware('guest:dosen');
+//    Route::get('/paper/show/{id_paper}', 'Admin\PaperController@show')->name('admin.paper.show');
 });
