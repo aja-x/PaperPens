@@ -109,20 +109,21 @@
                     <div id="mySignin" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySigninModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 id="mySigninModalLabel">Login to your <strong>account</strong></h4>
+                            {{--<h4 id="mySigninModalLabel">Login to your <strong>account</strong></h4>--}}
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" method="post" action="">
+                            <form class="form-horizontal" method="post" action="{{ route('dosen.login') }}">
+                                @csrf
                                 <div class="control-group">
                                     <label class="control-label" for="inputText">Email</label>
                                     <div class="controls">
-                                        <input type="text" id="inputText" placeholder="Username" name="email">
+                                        <input type="text" id="inputText" placeholder="Username" name="email_dosen">
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="inputSigninPassword">Password</label>
                                     <div class="controls">
-                                        <input type="password" id="inputSigninPassword" placeholder="Password" name="password">
+                                        <input type="password" id="inputSigninPassword" placeholder="Password" name="password_dosen">
                                     </div>
                                 </div>
                                 <div class="control-group">

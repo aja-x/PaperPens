@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -36,32 +37,33 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:editor')->except('logout');
+//        $this->middleware('guest:admin')->except('logout');
+//        $this->middleware('guest:editor')->except('logout');
         $this->middleware('guest:dosen')->except('logout');
     }
 
     public function username()
     {
-        return 'email_admin';
+        return 'email_dosen';
     }
 
     public function showLoginForm()
     {
-        return view('backend.admin.login');
+//        return view('admin.login');
     }
 
-    protected function validateLogin(Request $request)
+    protected function credentials(Request $request)
     {
-        $request->validate([
-            $this->username() => 'required|string',
-            'password_admin' => 'required|string',
-        ]);
+        return $request->only($this->username(), 'password_dosen');
     }
 
     public function logout()
     {
-        Auth::logout();
-        return redirect(url('/admin/login'));
+        Auth::logout('dosen');
+        return redirect(url('/'));
+    }
+    protected function guard()
+    {
+        return Auth::guard('dosen');
     }
 }

@@ -47,17 +47,17 @@ return [
         ],
 
         'admin' => [
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'admin',
         ],
 
         'editor' => [
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'editor',
         ],
 
         'dosen' => [
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'dosen',
         ],
     ],
