@@ -16,9 +16,8 @@ Route::prefix('explore')->group(function () {
     Route::get('/year/{year}', 'ExploreController@PaperByYear')->name('explore.year');
 
 });
-Route::get ( '/', function () {
-    return view ( 'layouts.app' );
-});
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('search/', 'SearchController@getSearch')->name('search.cari');
 
