@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="span4">
                     <div class="logo">
-                        <a href="https://www.pens.ac.id/"><img src="{{ asset('img/logo3.png') }}" width="150" height="150" alt="" class="logo"  /></a>
+                        <a href="{{ route('home') }}"><img src="{{ asset('img/logo3.png') }}" width="150" height="150" alt="" class="logo"  /></a>
                     </div>
                 </div>
                 <div class="span8">
@@ -131,9 +131,9 @@
                                         </ul>
                                     </li>
                                     <li class="search-form">
-                                        <form class="form-search">
-                                            <input placeholder="Type something" type="text" class="input-medium search-query">
-                                            <button type="submit" class="btn btn-square btn-theme">Search</button>
+                                        <form class="form-search" action="{{ route('search.cari') }}" method="GET">
+                                            <input placeholder="Cari judul.." type="text" class="validate" name="q">
+                                            <button type="submit" class="btn btn-square btn-theme" >Search</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -163,13 +163,15 @@
                 <div class="section">
                   @if (count($hasil))
                     <div class="card-panel green white-text"><h5>Hasil pencarian : {{$keyword}}</h5></div>
-                    @foreach($hasil as $data)
-                <!--  <div class="row">
-                    <div class="col s12"> -->
-                      <h5>{{ $data->judul_paper }}</h5>
-                  <!--   </div>
-                  </div> -->
-                  @endforeach
+                        <table class="table table-striped table-hover" id="dosen-datatable" width="100%">
+                            @foreach ($hasil as $data)
+                                <tr>
+                                    <td>
+                                        <a class="" href="{{ route('paper.show',$data->id_paper) }}">{{ $data->judul_paper }}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
                 </div>
                 @else
                 <div class="card-panel red darken-3 white-text">Oops.. Data <b>"{{$keyword}}"</b> Tidak Ditemukan</div>
