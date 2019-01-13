@@ -51,7 +51,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 id="mySigninModalLabel">Login to your <strong>account</strong></h4>
-                        </div>s
+                        </div>
                         <div class="modal-body">
                             <form class="form-horizontal">
                                 <div class="control-group">
@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="span4">
                     <div class="logo">
-                        <a href="https://www.pens.ac.id/"><img src="{{ asset('img/logo3.png') }}" width="150" height="150" alt="" class="logo"  /></a>
+                        <a href="{{ route('home') }}"><img src="{{ asset('img/logo3.png') }}" width="150" height="150" alt="" class="logo"  /></a>
                     </div>
                 </div>
                 <div class="span8">
@@ -130,23 +130,24 @@
                                             <li><a href="topic/show">By Topics</a></li>
                                         </ul>
                                     </li>
+
                                     <li class="search-form">
-                                        <form class="form-search">
-                                            <input placeholder="Type something" type="text" class="input-medium search-query">
-                                            <button type="submit" class="btn btn-square btn-theme">Search</button>
+                                        <form class="form-search" action="{{ route('search.cari') }}" method="GET">
+                                            <input placeholder="Cari judul.." type="text" class="validate" name="q">
+                                            <button type="submit" class="btn btn-square btn-theme" >Search</button>
                                         </form>
                                     </li>
                                 </ul>
-                                 <!-- <ul class="search-form">
-                                    <aside class="left-sidebar">
-                                        <div class="widget">
-                                            <form class="form-search">
-                                                <input placeholder="Type something" type="text" class="input-medium search-query">
-                                                <button type="submit" class="btn btn-square btn-theme">Search</button>
-                                            </form>
-                                        </div>
-                                    </aside>
-                                </ul> -->
+                                <!-- <ul class="search-form">
+                                   <aside class="left-sidebar">
+                                       <div class="widget">
+                                           <form class="form-search">
+                                               <input placeholder="Type something" type="text" class="input-medium search-query">
+                                               <button type="submit" class="btn btn-square btn-theme">Search</button>
+                                           </form>
+                                       </div>
+                                   </aside>
+                               </ul> -->
                             </nav>
                         </div>
                         <!-- end navigation -->
@@ -156,8 +157,61 @@
         </div>
     </header>
     <!-- end header -->
+
+    <section id="featured">
+        <!-- start slider -->
+        <!-- Slider -->
+        <div id="nivo-slider">
+            <div class="nivo-slider">
+                <!-- Slide #1 image -->
+                <img src="{{ asset('img/slides/ieee/gb-1.jpg') }}" alt="" title="#caption-1" />
+                <!-- Slide #2 image -->
+                <img src="{{ asset('img/slides/ieee/gb-2.jpg') }}" alt="" title="#caption-2" />
+                <!-- Slide #3 image -->
+                <img src="{{ asset('img/slides/ieee/gb-3.jpg') }}" alt="" title="#caption-3" />
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <!-- Slide #1 caption -->
+                        <div class="nivo-caption" id="caption-1">
+                            <div>
+                                <h2><strong>SAE eBooks Library Coming Soon to IEEE Xplore</strong></h2>
+                                <p>
+                                    Get access to the latest research in mobility engineering addressing the hottest technology trends in aerospace, automotive, and commercial vehicle technologies.
+                                </p>
+                                <a href="#" class="btn btn-theme"><strong>Learn More</strong></a>
+                            </div>
+                        </div>
+                        <!-- Slide #2 caption -->
+                        <div class="nivo-caption" id="caption-2">
+                            <div>
+                                <h2><strong>Artificial Intelligence Enable Next Generation of Space Communication</strong></h2>
+                                <p>
+                                    Researchers believe the next generation of space communication systems could develop from a new autonomous architecture employing articial neural network.
+                                </p>
+                                <a href="#" class="btn btn-theme"><strong>Learn More</strong></a>
+                            </div>
+                        </div>
+                        <!-- Slide #3 caption -->
+                        <div class="nivo-caption" id="caption-3">
+                            <div>
+                                <h2><strong>Fog Computing for Smart City Applications</strong></h2>
+                                <p>
+                                    In a smart city, consistent data flows are critical. Researchers have developed a new fog computing anomaly detection system that can identify issues in smart city applications and quickly detect data flow interruptions.
+                                </p>
+                                <a href="#" class="btn btn-theme"><strong>Learn More</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end slider -->
+    </section>
+    <!-- end header -->
     @yield('content')
-    <!-- start footer -->
+<!-- start footer -->
     <footer>
         <div class="container">
             <div class="row">

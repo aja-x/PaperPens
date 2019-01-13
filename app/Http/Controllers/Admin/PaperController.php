@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\PaperModel;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+namespace App\Http\Controllers\Admin;
 
-class HomeController extends Controller
+use App\PaperModel;
+use App\VPaperKeywordModel;
+use App\VPaperTopicModel;
+use App\VPaperKontributorModel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class PaperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +18,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $paper = PaperModel::all();
-      $latest = PaperModel::orderBy('id_paper', 'DESC')->get();
-      return view('homepage.home', compact('paper', 'latest'));
+        $paper = PaperModel::all();
+        $i=0;
+        return view('admin.paper.index',compact('paper', 'i'));
     }
 
     /**
@@ -46,9 +50,29 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_paper)
     {
-        //
+        $i=0;
+        $paper = PaperModel::find($id_paper);
+        $topic = $this->getPaperTopic($id_paper);
+        $keyword = $this->getPaperKeyword($id_paper);
+        $kontributor = $this->getPaperKontributor($id_paper);
+        return view('admin.paper.show',compact('paper', 'topic', 'keyword', 'kontributor', 'i'));
+    }
+
+    public function getPaperKeyword($id_paper)
+    {
+        return VPaperKeywordModel::where('id_paper', $id_paper)->get();
+    }
+
+    public function getPaperTopic($id_paper)
+    {
+        return VPaperTopicModel::where('id_paper', $id_paper)->get();
+    }
+
+    public function getPaperKontributor($id_paper)
+    {
+        return VPaperKontributorModel::where('id_paper', $id_paper)->get();
     }
 
     /**
@@ -83,10 +107,5 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function login()
-    {
-        return redirect()->route('admin.index');
     }
 }

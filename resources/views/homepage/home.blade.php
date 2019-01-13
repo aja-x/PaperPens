@@ -51,9 +51,10 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 id="mySigninModalLabel">Login to your <strong>account</strong></h4>
-                        </div>s
+                        </div>
                         <div class="modal-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" action="{{ route('login') }}" method="post">
+                                @csrf
                                 <div class="control-group">
                                     <label class="control-label" for="inputText">Username</label>
                                     <div class="controls">
@@ -108,7 +109,7 @@
             <div class="row">
                 <div class="span4">
                     <div class="logo">
-                        <a href="https://www.pens.ac.id/"><img src="{{ asset('img/logo3.png') }}" width="150" height="150" alt="" class="logo"  /></a>
+                        <a href="{{ route('home') }}"><img src="{{ asset('img/logo3.png') }}" width="150" height="150" alt="" class="logo"  /></a>
                     </div>
                 </div>
                 <div class="span8">
@@ -133,8 +134,8 @@
 
                                     <li class="search-form">
                                         <form class="form-search" action="{{ route('search.cari') }}" method="GET">
-                                            <input placeholder="Cari judul.." type="text" class="validate">
-                                            <button type="submit" class="btn btn-square btn-theme" name="q">Search</button>
+                                            <input placeholder="Cari judul.." type="text" class="validate" name="q">
+                                            <button type="submit" class="btn btn-square btn-theme" >Search</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -215,18 +216,33 @@
                 <div class="span5">
                     <h5 class="media-heading">
                         <i class="fa fa-clock-o" aria-hidden="true"></i><span>
-                            Just Published
+                            Just Published <br>
                         </span>
-                        <div class="form-group"><strong>
-                          {{--<h4>{{ $data->judul_paper }}<h4></strong>--}}
-                        </div>
+                        <table class="table table-striped table-hover" id="dosen-datatable" width="100%">
+                            @foreach ($paper as $data)
+                                <tr>
+                                    <td>
+                                        <a class="" href="{{ route('paper.show',$data->id_paper) }}">{{ $data->judul_paper }}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
                     </h5>
                 </div>
                 <div class="span5">
                     <h5 class="media-heading">
                         <i class="fa fa-tachometer" aria-hidden="true"></i><span>
-                            Most Popular
+                            Most Popular <br>
                         </span>
+                        <table class="table table-striped table-hover" id="dosen-datatable" width="100%">
+                            @foreach ($latest as $data)
+                                <tr>
+                                    <td>
+                                        <a class="" href="{{ route('paper.show',$data->id_paper) }}">{{ $data->judul_paper }}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
                     </h5>
                 </div>
                 <div class="span2">

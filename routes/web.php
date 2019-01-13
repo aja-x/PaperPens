@@ -18,8 +18,11 @@ Route::prefix('explore')->group(function () {
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/search', 'SearchController@getSearch')->name('search.cari');
+Route::post('/login', function () {
+    return redirect()->route('admin.index');
+})->name('login');
+
 
 Route::prefix('admin')->group(function () {
     //Admin Profile
@@ -62,6 +65,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/paper/show/{id_paper}', 'Admin\PaperController@show')->name('admin.paper.show');
 
     //Login route
-    Route::post('/dosen/login', 'Admin\Auth\LoginController@login')->name('dosen.login')->middleware('guest:dosen');
+//    Route::post('/dosen/login', 'Admin\Auth\LoginController@login')->name('dosen.login')->middleware('guest:dosen');
 //    Route::get('/paper/show/{id_paper}', 'Admin\PaperController@show')->name('admin.paper.show');
+});
+
+Route::prefix('paper')->group(function () {
+    Route::get('/', 'PaperController@index')->name('paper.index');
+    Route::get('/show/{id_paper}', 'PaperController@show')->name('paper.show');
+    Route::get('/create', 'PaperController@create')->name('paper.create');
+    Route::post('/store','PaperController@store')->name('paper.store');
+    Route::get('/edit/{id_paper}', 'PaperController@edit')->name('paper.edit');
+    Route::post('/update/{id_paper}','PaperController@update')->name('paper.update');
+    Route::post('/destroy/{id_paper}', 'PaperController@destroy')->name('paper.destroy');
 });

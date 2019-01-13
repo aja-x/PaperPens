@@ -30,15 +30,14 @@
         <div class="row">
             <div class="span4">
                 <div class="inner-heading">
-                    <h2>Post left sidebar</h2>
+                    <h2>Admin Panel</h2>
                 </div>
             </div>
             <div class="span8">
                 <div class="">
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
-                        <li><a href="#">Blog</a><i class="icon-angle-right"></i></li>
-                        <li class="active">Blog post left sidebar</li>
+                        <li><a href="#">Admin</a>
                     </ul>
                 </div>
                 <div class="navbar">
